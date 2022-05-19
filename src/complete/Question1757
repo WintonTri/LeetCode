@@ -1,0 +1,4 @@
+// Attempt 1 Completed -> 04/29/2022
+
+SELECT product_id FROM Products
+WHERE low_fats = 'Y' AND recyclable = 'Y'
