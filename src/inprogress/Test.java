@@ -11,7 +11,27 @@ import java.util.stream.Collectors;
 public class Test {
 
     public static void main(String[] args) {
+        System.out.println("Hello");
+    }
 
+    public static int countWays(List<Integer> nums) {
+        int length = nums.size(), count = 0;
+        for (int i = 1; i < length; i++) {
+            nums.set(i, nums.get(i - 1));
+        }
+
+        for (int i = 0, j = 0, k = 0; i < length - 2; i++) {
+            while (j <= i || (j < length - 1 && nums.get(j) < nums.get(i) * 2)) {
+                j++;
+            }
+
+            while (k < j || (k < length - 1 && nums.get(k) - nums.get(i) <= nums.get(length - 1) - nums.get(k))) {
+                k++;
+            }
+
+            count = (count - j + k) % 1000000007;
+        }
+        return count;
     }
 
     public static int vowelsubstring(String s) {
@@ -77,7 +97,7 @@ public class Test {
                     if (i < 0)
                         return i + k;
                     return i - k;
-                } )
+                })
                 .collect(Collectors.toList());
 
         // Setting the min and max values
