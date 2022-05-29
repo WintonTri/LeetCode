@@ -1,13 +1,12 @@
 package complete;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 // Valid -> 04/26/2022
 public class Question3 {
 
     public static void main(String[] args) {
-        lengthOfLongestSubstring("dvdf");
+        lengthOfLongestSubstring2("pwwkew");
     }
 
     public static int lengthOfLongestSubstring(String s) {
@@ -46,6 +45,29 @@ public class Question3 {
 //        System.out.println("Longest: " + longestLength + ", Current: " + currentCount);
         list.clear();
         return Math.max(longestLength, currentCount);
+    }
+
+    // Second attempt
+    // An alternative to this would be using a hashmap
+    // Storing the character and index, then each time the index could be overwritten.
+    // Longest length can also be calculated by using the last index the duplicate character was at
+    public static int lengthOfLongestSubstring2(String s) {
+        if (s.length() == 0)
+            return 0;
+
+        int longestLength = 0;
+        Queue<Character> queue = new LinkedList<>();
+
+        for (char c : s.toCharArray()) {
+            while (queue.contains(c))
+                queue.poll();
+
+            queue.add(c);
+            longestLength = Math.max(longestLength, queue.size());
+            System.out.println("Char Pushed: " + c + ", Longest Size: " + longestLength + ", " + queue);
+        }
+
+        return longestLength;
     }
 
 }
