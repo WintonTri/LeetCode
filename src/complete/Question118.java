@@ -3,6 +3,7 @@ package complete;
 import java.util.ArrayList;
 import java.util.List;
 
+// Attempt 1 Completed -> 05/27/2022
 public class Question118 {
 
     public List<List<Integer>> generate(int numRows) {

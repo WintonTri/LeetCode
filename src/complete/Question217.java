@@ -23,7 +23,7 @@ public class Question217 {
     // Another approach to doing this problem
     public boolean containsDuplicateSecondAttempt(int[] nums) {
         if (nums.length <= 1)
-            return true;
+            return false;
         HashSet<Integer> set = new HashSet<>();
 
         for (int i : nums) {
