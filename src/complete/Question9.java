@@ -1,8 +1,10 @@
-package inprogress;
+package complete;
 
 // Attempt 1 Completed -> 04/29/2022
 // Should redo this problem without converting the number to a string
 // Note for second attempt -> reverse the number and then compare normal with reversed
+
+// Attempt 2 Completed -> 05/29/2022
 public class Question9 {
 
     public boolean isPalindrome(int x) {
@@ -21,6 +23,24 @@ public class Question9 {
         }
 
         return true;
+    }
+
+
+    public boolean isPalindrome2(int x) {
+        if (x < 0) // Negative numbers are not palindrome
+            return false;
+
+        // Setting up the remaining code, checking this case
+        if (x % 10 == 0 && x != 0)
+            return false;
+
+        int revertedNumber = 0;
+        while (x > revertedNumber) {
+            revertedNumber = revertedNumber * 10 + x % 10; // Add the last digit
+            x /= 10; // Remove the last digit
+        }
+
+        return x == revertedNumber || x == revertedNumber / 10;
     }
 
 }
