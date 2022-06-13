@@ -1,4 +1,4 @@
-package inprogress;
+package complete;
 
 // Attempt 1 Completed -> 06/11/2022
 public class Question2221 {
