@@ -1,8 +1,6 @@
 package inprogress;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /*
@@ -10,8 +8,56 @@ import java.util.stream.Collectors;
  */
 public class Test {
 
+
+    public int minSetSize(int[] arr) {
+        // Key = num, value = occurences
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : arr)
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        List<Integer> freqList = new ArrayList<>();
+        freqList.addAll(map.values());
+
+
+        int res = 0;
+        int currentSize = arr.length;
+        Collections.sort(freqList);
+        Collections.reverse(freqList);
+
+
+        for (int i : freqList) {
+            currentSize -= i;
+            res++;
+            if (currentSize <= arr.length / 2) {
+                return res;
+            }
+        }
+
+
+        return res;
+    }
+
     public static void main(String[] args) {
-        System.out.println("Hello");
+        List<Integer> list = new ArrayList<>();
+        list.add(3);
+        list.add(345);
+        list.add(34);
+        list.add(111);
+        list.add(31);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        Collections.sort(list);
+        System.out.println(list);
+        int left = 0, right = list.size() - 1;
+        while (left < right) {
+            int temp = list.get(left);
+            list.set(left, list.get(right));
+            list.set(right, temp);
+
+            left++;
+            right--;
+        }
+        System.out.println(list);
     }
 
     public static int countWays(List<Integer> nums) {
